@@ -10,6 +10,7 @@ func (s *InvoicesService) NewCreateRequest() InvoicesCreateRequest {
 	return InvoicesCreateRequest{
 		api:         s.api,
 		method:      http.MethodPost,
+		params:      *NewInvoicesCreateParams(),
 		requestBody: s.NewCreateRequestBody(),
 	}
 }
@@ -19,8 +20,8 @@ type InvoicesCreateRequest struct {
 	// queryParams InvoicesCreateQueryParams
 	// pathParams  InvoicesCreatePathParams
 	method      string
-	params      InvoicesCreateParams
 	headers     http.Header
+	params      InvoicesCreateParams
 	requestBody InvoicesCreateRequestBody
 }
 
@@ -62,6 +63,12 @@ func (r *InvoicesCreateRequest) Do() (InvoicesCreateResponseBody, error) {
 
 func (r *InvoicesCreateRequest) NewResponseBody() *InvoicesCreateResponseBody {
 	return &InvoicesCreateResponseBody{}
+}
+
+func NewInvoicesCreateParams() *InvoicesCreateParams {
+	return &InvoicesCreateParams{
+		documentType: Invoice,
+	}
 }
 
 type InvoicesCreateParams struct {

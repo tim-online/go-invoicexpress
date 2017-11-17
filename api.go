@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -311,7 +312,7 @@ type ErrorResponse struct {
 func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 	tmp := struct {
 		Errors []struct {
-			Error error `json:"error"`
+			Error string `json:"error"`
 		} `json:"errors"`
 	}{}
 
@@ -321,7 +322,7 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 	}
 
 	for _, err := range tmp.Errors {
-		r.Errors = append(r.Errors, err.Error)
+		r.Errors = append(r.Errors, errors.New(err.Error))
 	}
 
 	return nil

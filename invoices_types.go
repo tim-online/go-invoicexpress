@@ -25,7 +25,7 @@ type NewInvoice struct {
 	Reference            string           `json:"reference"`
 	Observations         string           `json:"observations"`
 	Retention            string           `json:"retention"`
-	TaxExemption         TaxExemptionCode `json:"tax_exemption"`
+	TaxExemption         TaxExemptionCode `json:"tax_exemption,omitempty"`
 	SequenceID           string           `json:"sequence_id"`
 	ManualSequenceNumber string           `json:"manual_sequence_number"`
 	Client               NewClient        `json:"client"`
