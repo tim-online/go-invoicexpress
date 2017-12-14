@@ -88,7 +88,11 @@ func (s *InvoicesService) NewCreateRequestBody() InvoicesCreateRequestBody {
 }
 
 type InvoicesCreateRequestBody struct {
-	Invoice NewInvoice `json:"invoice"`
+	Invoice           NewInvoice `json:"invoice"`
+	SimplifiedInvoice NewInvoice `json:"simplified_invoice"`
+	InvoiceReceipt    NewInvoice `json:"invoice_receipt"`
+	CreditNote        NewInvoice `json:"credit_note"`
+	DebitNote         NewInvoice `json:"debit_note"`
 }
 
 type InvoicesCreateResponseBody struct {
