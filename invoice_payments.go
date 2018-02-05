@@ -88,5 +88,10 @@ type InvoicePaymentRequestBody struct {
 	PartialPayment PaymentItem `json:"partial_payment"`
 }
 
+type PaymentItem struct {
+	PaymentMethod string `json:"payment_method"`
+	Amount        string `json:"amount"`
+}
+
 type InvoicePaymentResponseBody struct {
 }
