@@ -96,4 +96,9 @@ type InvoicesCreateRequestBody struct {
 }
 
 type InvoicesCreateResponseBody struct {
+	Invoice ResponseInvoice `json:"invoice"`
+}
+
+type ResponseInvoice struct {
+	InvoiceID int `json:"id"`
 }

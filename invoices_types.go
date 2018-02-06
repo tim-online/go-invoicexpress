@@ -30,6 +30,7 @@ type NewInvoice struct {
 	ManualSequenceNumber string           `json:"manual_sequence_number"`
 	Client               NewClient        `json:"client"`
 	Items                []NewItem        `json:"items"`
+	PartialPayments      []PaymentItem    `json:"partial_payments"`
 	MbReference          string           `json:"mb_reference"`
 	OwnerInvoiceID       string           `json:"owner_invoice_id"`
 }
@@ -56,6 +57,7 @@ var (
 	Draft      InvoiceStatus = "draft"
 	Sent       InvoiceStatus = "sent"
 	Settled    InvoiceStatus = "settled"
+	Finalized  InvoiceStatus = "finalized"
 	Canceled   InvoiceStatus = "canceled"
 	SecondCopy InvoiceStatus = "second_copy"
 )
