@@ -89,7 +89,7 @@ type InvoicePaymentRequestBody struct {
 }
 
 type PaymentItem struct {
-	PaymentMethod string  `json:"payment_method"`
+	PaymentMethod string  `json:"payment_mechanism"`
 	Amount        float64 `json:"amount"`
 }
 
