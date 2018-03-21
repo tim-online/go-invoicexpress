@@ -315,6 +315,7 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 			Error string `json:"error"`
 		} `json:"errors"`
 	}{}
+	log.Println(string(data[:]))
 
 	err := json.Unmarshal(data, &tmp)
 	if err != nil {
