@@ -20,8 +20,8 @@ func (d InvoiceDocumentType) String() string {
 }
 
 type NewInvoice struct {
-	Date                 date.Date        `json:"date"`
-	DueDate              date.Date        `json:"due_date"`
+	Date                 string           `json:"date"`
+	DueDate              strubg           `json:"due_date"`
 	Reference            string           `json:"reference"`
 	Observations         string           `json:"observations"`
 	Retention            string           `json:"retention"`
