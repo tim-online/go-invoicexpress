@@ -1,7 +1,5 @@
 package invoicexpress
 
-import "github.com/aodin/date"
-
 type InvoiceDocumentType struct {
 	Type string
 	Path string
