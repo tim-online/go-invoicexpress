@@ -252,11 +252,6 @@ func (api *API) Do(req *http.Request, responseBody interface{}) (*http.Response,
 func CheckResponse(r *http.Response) error {
 	errorResponse := &ErrorResponse{Response: r}
 
-	err := checkContentType(r)
-	if err != nil {
-		errorResponse.Errors = append(errorResponse.Errors, err)
-	}
-
 	// Don't check content-lenght: a created response, for example, has no body
 	// if r.Header.Get("Content-Length") == "0" {
 	// 	errorResponse.Errors.Message = r.Status
@@ -265,6 +260,12 @@ func CheckResponse(r *http.Response) error {
 
 	if c := r.StatusCode; c >= 200 && c <= 299 {
 		return nil
+	}
+
+	err := checkContentType(r)
+	if err != nil {
+		errorResponse.Errors = append(errorResponse.Errors, errors.New(r.Status))
+		return errorResponse
 	}
 
 	// read data and copy it back
