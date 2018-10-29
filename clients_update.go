@@ -3,6 +3,7 @@ package invoicexpress
 import (
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -45,7 +46,7 @@ func (r *ClientsUpdateRequest) SetRequestBody(body ClientsUpdateRequestBody) {
 
 func (r *ClientsUpdateRequest) URL() url.URL {
 	path := "clients/:client-id.json"
-	path = strings.Replace(path, ":client-id", r.urlParams.ClientID, 1)
+	path = strings.Replace(path, ":client-id", strconv.Itoa(r.urlParams.ClientID), 1)
 	return r.api.GetEndpointURL(path)
 }
 
@@ -69,7 +70,7 @@ func NewClientsUpdateURLParams() *ClientsUpdateURLParams {
 }
 
 type ClientsUpdateURLParams struct {
-	ClientID string
+	ClientID int
 }
 
 func (s *ClientsService) NewUpdateRequestBody() ClientsUpdateRequestBody {
