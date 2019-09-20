@@ -316,15 +316,28 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 			Error string `json:"error"`
 		} `json:"errors"`
 	}{}
-	log.Println(string(data[:]))
 
 	err := json.Unmarshal(data, &tmp)
+	if err == nil {
+		for _, err := range tmp.Errors {
+			r.Errors = append(r.Errors, errors.New(err.Error))
+		}
+		return nil
+	}
+
+	tmp2 := [][]string{}
+
+	err = json.Unmarshal(data, &tmp2)
 	if err != nil {
+		log.Println(string(data[:]))
+		log.Println("2")
 		return err
 	}
 
-	for _, err := range tmp.Errors {
-		r.Errors = append(r.Errors, errors.New(err.Error))
+	for _, v := range tmp2 {
+		for _, e := range v {
+			r.Errors = append(r.Errors, errors.New(e))
+		}
 	}
 
 	return nil
