@@ -329,8 +329,6 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 
 	err = json.Unmarshal(data, &tmp2)
 	if err != nil {
-		log.Println(string(data[:]))
-		log.Println("2")
 		return err
 	}
 
