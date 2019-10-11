@@ -328,17 +328,33 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 	tmp2 := [][]string{}
 
 	err = json.Unmarshal(data, &tmp2)
-	if err != nil {
-		return err
-	}
-
-	for _, v := range tmp2 {
-		for _, e := range v {
-			r.Errors = append(r.Errors, errors.New(e))
+	if err == nil {
+		for _, v := range tmp2 {
+			for _, e := range v {
+				r.Errors = append(r.Errors, errors.New(e))
+			}
 		}
+		return nil
 	}
 
-	return nil
+	// {"errors":[{"error":["CantHandle: draft for CreditNote"]}]}
+	tmp3 := struct {
+		Errors []struct {
+			Error []string `json:"error"`
+		} `json:"errors"`
+	}{}
+
+	err = json.Unmarshal(data, &tmp3)
+	if err == nil {
+		for _, v := range tmp3.Errors {
+			for _, e := range v.Error {
+				r.Errors = append(r.Errors, errors.New(e))
+			}
+		}
+		return nil
+	}
+
+	return err
 }
 
 func (r ErrorResponse) Error() string {
