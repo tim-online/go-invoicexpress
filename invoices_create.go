@@ -103,7 +103,7 @@ type ResponseInvoice struct {
 	Type                   string         `json:"type"`
 	SequenceNumber         string         `json:"sequence_number"`
 	InvertedSequenceNumber string         `json:"inverted_sequence_number"`
-	SequenceID             int            `json:"sequence_id"`
+	SequenceID             string         `json:"sequence_id"`
 	Date                   string         `json:"date"`
 	DueDate                string         `json:"due_date"`
 	Reference              string         `json:"reference"`
