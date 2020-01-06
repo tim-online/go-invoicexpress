@@ -80,19 +80,15 @@ func (p *InvoicesCreateParams) SetDocumentType(documentType InvoiceDocumentType)
 }
 
 func (s *InvoicesService) NewCreateRequestBody() InvoicesCreateRequestBody {
-	return InvoicesCreateRequestBody{
-		Invoice: NewInvoice{
-			Items: []NewItem{},
-		},
-	}
+	return InvoicesCreateRequestBody{}
 }
 
 type InvoicesCreateRequestBody struct {
-	Invoice           NewInvoice `json:"invoice"`
-	SimplifiedInvoice NewInvoice `json:"simplified_invoice"`
-	InvoiceReceipt    NewInvoice `json:"invoice_receipt"`
-	CreditNote        NewInvoice `json:"credit_note"`
-	DebitNote         NewInvoice `json:"debit_note"`
+	Invoice           *NewInvoice `json:"invoice"`
+	SimplifiedInvoice *NewInvoice `json:"simplified_invoice"`
+	InvoiceReceipt    *NewInvoice `json:"invoice_receipt"`
+	CreditNote        *NewInvoice `json:"credit_note"`
+	DebitNote         *NewInvoice `json:"debit_note"`
 }
 
 type InvoicesCreateResponseBody struct {
