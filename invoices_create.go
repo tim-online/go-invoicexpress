@@ -134,7 +134,7 @@ type ResponseItem struct {
 	Description    string  `json:"description"`
 	UnitPrice      Number  `json:"unit_price"`
 	Unit           string  `json:"unit"`
-	Quantity       int     `json:"quantity"`
+	Quantity       Number  `json:"quantity"`
 	Tax            Tax     `json:"tax"`
 	Discount       float64 `json:"discount"`
 	Subtotal       float64 `json:"subtotal"`
