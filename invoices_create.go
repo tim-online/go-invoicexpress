@@ -101,5 +101,48 @@ type InvoicesCreateResponseBody struct {
 }
 
 type ResponseInvoice struct {
-	InvoiceID int `json:"id"`
+	ID                     int            `json:"id"`
+	Status                 string         `json:"status"`
+	Archived               bool           `json:"archived"`
+	Type                   string         `json:"type"`
+	SequenceNumber         string         `json:"sequence_number"`
+	InvertedSequenceNumber string         `json:"inverted_sequence_number"`
+	SequenceID             int            `json:"sequence_id"`
+	Date                   string         `json:"date"`
+	DueDate                string         `json:"due_date"`
+	Reference              string         `json:"reference"`
+	Observations           string         `json:"observations"`
+	Retention              interface{}    `json:"retention"`
+	Permalink              string         `json:"permalink"`
+	Sum                    float64        `json:"sum"`
+	Discount               float64        `json:"discount"`
+	BeforeTaxes            float64        `json:"before_taxes"`
+	Taxes                  float64        `json:"taxes"`
+	Total                  float64        `json:"total"`
+	Currency               string         `json:"currency"`
+	Client                 ResponseClient `json:"client"`
+	Items                  []ResponseItem `json:"items"`
+}
+
+type ResponseClient struct {
+	ID      int    `json:"id"`
+	Name    string `json:"name"`
+	Address string `json:"address"`
+	Country string `json:"country"`
+	Code    string `json:"code"`
+	City    string `json:"city"`
+}
+
+type ResponseItem struct {
+	Name           string  `json:"name"`
+	Description    string  `json:"description"`
+	UnitPrice      string  `json:"unit_price"`
+	Unit           string  `json:"unit"`
+	Quantity       string  `json:"quantity"`
+	Tax            Tax     `json:"tax"`
+	Discount       float64 `json:"discount"`
+	Subtotal       float64 `json:"subtotal"`
+	TaxAmount      float64 `json:"tax_amount"`
+	DiscountAmount float64 `json:"discount_amount"`
+	Total          float64 `json:"total"`
 }
