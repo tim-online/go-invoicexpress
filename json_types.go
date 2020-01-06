@@ -2,6 +2,7 @@ package invoicexpress
 
 import (
 	"encoding/json"
+	"strconv"
 	"time"
 
 	"github.com/aodin/date"
@@ -53,4 +54,29 @@ type Pagination struct {
 	PerPage      int `json:"per_page"`
 	CurrentPage  int `json:"current_page"`
 	TotalEntries int `json:"total_entries"`
+}
+
+type Number float64
+
+func (n *Number) UnmarshalJSON(text []byte) (err error) {
+	var f float64
+	err = json.Unmarshal(text, &f)
+	if err == nil {
+		*n = Number(f)
+		return err
+	}
+
+	var s string
+	err = json.Unmarshal(text, &s)
+	if err == nil {
+		f, err = strconv.ParseFloat(s, 64)
+		if err != nil {
+			return err
+		}
+
+		*n = Number(f)
+		return err
+	}
+
+	return err
 }

@@ -132,7 +132,7 @@ type ResponseClient struct {
 type ResponseItem struct {
 	Name           string  `json:"name"`
 	Description    string  `json:"description"`
-	UnitPrice      string  `json:"unit_price"`
+	UnitPrice      Number  `json:"unit_price"`
 	Unit           string  `json:"unit"`
 	Quantity       int     `json:"quantity"`
 	Tax            Tax     `json:"tax"`
