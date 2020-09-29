@@ -94,6 +94,7 @@ type InvoicesCreateRequestBody struct {
 type InvoicesCreateResponseBody struct {
 	Invoice    ResponseInvoice `json:"invoice"`
 	CreditNote ResponseInvoice `json:"credit_note"`
+	DebitNote  ResponseInvoice `json:"debit_note"`
 }
 
 type ResponseInvoice struct {
