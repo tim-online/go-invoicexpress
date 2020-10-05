@@ -120,6 +120,7 @@ type InvoicesListAllQueryParams struct {
 	TotalBeforeTaxesFrom null.Float            `schema:"total_before_taxes[from],omitempty"`
 	TotalBeforeTaxesTo   null.Float            `schema:"total_before_taxes[to],omitempty"`
 	NonArchived          null.Bool             `schema:"non_archived,omitempty"`
+	Archived             null.Bool             `schema:"archived,omitempty"`
 	Page                 int                   `schema:"page,omitempty"`
 	PerPage              int                   `schema:"per_page,omitempty"`
 }
