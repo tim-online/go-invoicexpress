@@ -140,50 +140,52 @@ func (p InvoicesListAllQueryParams) ToURLValues() url.Values {
 }
 
 type InvoicesListAllResponseBody struct {
-	Invoices []struct {
-		ID                     int     `json:"id"`
-		Status                 string  `json:"status"`
-		Archived               bool    `json:"archived"`
-		Type                   string  `json:"type"`
-		SequenceNumber         string  `json:"sequence_number"`
-		InvertedSequenceNumber string  `json:"inverted_sequence_number"`
-		Date                   string  `json:"date"`
-		DueDate                string  `json:"due_date"`
-		Reference              string  `json:"reference"`
-		Observations           string  `json:"observations"`
-		Retention              string  `json:"retention"`
-		Permalink              string  `json:"permalink"`
-		SaftHash               string  `json:"saft_hash"`
-		Sum                    float64 `json:"sum"`
-		Discount               float64 `json:"discount"`
-		BeforeTaxes            float64 `json:"before_taxes"`
-		Taxes                  float64 `json:"taxes"`
-		Total                  float64 `json:"total"`
-		Currency               string  `json:"currency"`
-		Client                 struct {
-			ID      int    `json:"id"`
-			Name    string `json:"name"`
-			Country string `json:"country"`
-		} `json:"client"`
-		Items []struct {
-			Name        string `json:"name"`
-			Description string `json:"description"`
-			UnitPrice   string `json:"unit_price"`
-			Unit        string `json:"unit"`
-			Quantity    string `json:"quantity"`
-			Tax         struct {
-				ID    int     `json:"id"`
-				Name  string  `json:"name"`
-				Value float64 `json:"value"`
-			} `json:"tax"`
-			Discount       float64 `json:"discount"`
-			Subtotal       float64 `json:"subtotal"`
-			TaxAmount      float64 `json:"tax_amount"`
-			DiscountAmount float64 `json:"discount_amount"`
-			Total          float64 `json:"total"`
-		} `json:"items"`
-		SequenceID   int    `json:"sequence_id"`
-		TaxExemption string `json:"tax_exemption"`
-	} `json:"invoices"`
-	Pagination Pagination `json:"pagination"`
+	Invoices   []InvoiceListAllResponseInvoice `json:"invoices"`
+	Pagination Pagination                      `json:"pagination"`
+}
+
+type InvoiceListAllResponseInvoice struct {
+	ID                     int     `json:"id"`
+	Status                 string  `json:"status"`
+	Archived               bool    `json:"archived"`
+	Type                   string  `json:"type"`
+	SequenceNumber         string  `json:"sequence_number"`
+	InvertedSequenceNumber string  `json:"inverted_sequence_number"`
+	Date                   string  `json:"date"`
+	DueDate                string  `json:"due_date"`
+	Reference              string  `json:"reference"`
+	Observations           string  `json:"observations"`
+	Retention              string  `json:"retention"`
+	Permalink              string  `json:"permalink"`
+	SaftHash               string  `json:"saft_hash"`
+	Sum                    float64 `json:"sum"`
+	Discount               float64 `json:"discount"`
+	BeforeTaxes            float64 `json:"before_taxes"`
+	Taxes                  float64 `json:"taxes"`
+	Total                  float64 `json:"total"`
+	Currency               string  `json:"currency"`
+	Client                 struct {
+		ID      int    `json:"id"`
+		Name    string `json:"name"`
+		Country string `json:"country"`
+	} `json:"client"`
+	Items []struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+		UnitPrice   string `json:"unit_price"`
+		Unit        string `json:"unit"`
+		Quantity    string `json:"quantity"`
+		Tax         struct {
+			ID    int     `json:"id"`
+			Name  string  `json:"name"`
+			Value float64 `json:"value"`
+		} `json:"tax"`
+		Discount       float64 `json:"discount"`
+		Subtotal       float64 `json:"subtotal"`
+		TaxAmount      float64 `json:"tax_amount"`
+		DiscountAmount float64 `json:"discount_amount"`
+		Total          float64 `json:"total"`
+	} `json:"items"`
+	SequenceID   int    `json:"sequence_id"`
+	TaxExemption string `json:"tax_exemption"`
 }
