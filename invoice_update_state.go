@@ -97,7 +97,8 @@ type InvoiceUpdateStateRequestBody struct {
 }
 
 type UpdateStateBody struct {
-	State InvoiceStatus `json:"state"`
+	State   InvoiceStatus `json:"state"`
+	Message string        `json:"message"`
 }
 
 type InvoiceUpdateStateResponseBody struct {
