@@ -123,6 +123,7 @@ type InvoicesListAllQueryParams struct {
 	Archived             null.Bool             `schema:"archived,omitempty"`
 	Page                 int                   `schema:"page,omitempty"`
 	PerPage              int                   `schema:"per_page,omitempty"`
+	Reference            string                `schema:"reference,omitempty"`
 }
 
 func (p InvoicesListAllQueryParams) ToURLValues() url.Values {
