@@ -16,7 +16,7 @@ func (s *InvoicesService) NewListAllRequest() InvoicesListAllRequest {
 		},
 		queryParams: InvoicesListAllQueryParams{
 			Text:   "",
-			Types:  []InvoiceDocumentType{},
+			Types:  []string{},
 			Status: []InvoiceStatus{},
 		},
 	}
@@ -110,20 +110,20 @@ type InvoicesListAllURLParams struct {
 // }
 
 type InvoicesListAllQueryParams struct {
-	Text                 string                `schema:"text,omitempty"`
-	Types                []InvoiceDocumentType `schema:"type[],omitempty"`
-	Status               []InvoiceStatus       `schema:"status[],omitempty"`
-	DateFrom             Date                  `schema:"date[from],omitempty"`
-	DateTo               Date                  `schema:"date[to],omitempty"`
-	DueDateFrom          Date                  `schema:"due_date[from],omitempty"`
-	DueDateTo            Date                  `schema:"due_date[to],omitempty"`
-	TotalBeforeTaxesFrom null.Float            `schema:"total_before_taxes[from],omitempty"`
-	TotalBeforeTaxesTo   null.Float            `schema:"total_before_taxes[to],omitempty"`
-	NonArchived          null.Bool             `schema:"non_archived,omitempty"`
-	Archived             null.Bool             `schema:"archived,omitempty"`
-	Page                 int                   `schema:"page,omitempty"`
-	PerPage              int                   `schema:"per_page,omitempty"`
-	Reference            string                `schema:"reference,omitempty"`
+	Text                 string          `schema:"text,omitempty"`
+	Types                []string        `schema:"type[],omitempty"`
+	Status               []InvoiceStatus `schema:"status[],omitempty"`
+	DateFrom             Date            `schema:"date[from],omitempty"`
+	DateTo               Date            `schema:"date[to],omitempty"`
+	DueDateFrom          Date            `schema:"due_date[from],omitempty"`
+	DueDateTo            Date            `schema:"due_date[to],omitempty"`
+	TotalBeforeTaxesFrom null.Float      `schema:"total_before_taxes[from],omitempty"`
+	TotalBeforeTaxesTo   null.Float      `schema:"total_before_taxes[to],omitempty"`
+	NonArchived          null.Bool       `schema:"non_archived,omitempty"`
+	Archived             null.Bool       `schema:"archived,omitempty"`
+	Page                 int             `schema:"page,omitempty"`
+	PerPage              int             `schema:"per_page,omitempty"`
+	Reference            string          `schema:"reference,omitempty"`
 }
 
 func (p InvoicesListAllQueryParams) ToURLValues() url.Values {
