@@ -354,6 +354,19 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	// {"errors":{"error":"Document creation limit reached for the period from 15/12/2022 to 15/01/2023."}}
+	tmp4 := struct {
+		Errors struct {
+			Error string `json:"error"`
+		} `json:"errors"`
+	}{}
+
+	err = json.Unmarshal(data, &tmp4)
+	if err == nil {
+		r.Errors = append(r.Errors, errors.New(tmp4.Errors.Error))
+		return nil
+	}
+
 	return err
 }
 
