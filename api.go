@@ -367,6 +367,19 @@ func (r *ErrorResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	// {"errors":["Fiscal is invalid"]}
+	tmp5 := struct {
+		Errors []string `json:"errors"`
+	}{}
+
+	err = json.Unmarshal(data, &tmp5)
+	if err == nil {
+		for _, e := range tmp5.Errors {
+			r.Errors = append(r.Errors, errors.New(e))
+		}
+		return nil
+	}
+
 	return err
 }
 
