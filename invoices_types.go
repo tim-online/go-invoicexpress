@@ -31,6 +31,7 @@ type NewInvoice struct {
 	PartialPayments      []PaymentItem    `json:"partial_payments"`
 	MbReference          string           `json:"mb_reference"`
 	OwnerInvoiceID       string           `json:"owner_invoice_id"`
+	ProprietaryUID       string           `json:"proprietary_uid,omitempty"`
 }
 
 type NewItem struct {
