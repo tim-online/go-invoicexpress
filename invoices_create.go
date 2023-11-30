@@ -89,6 +89,7 @@ type InvoicesCreateRequestBody struct {
 	InvoiceReceipt    *NewInvoice `json:"invoice_receipt"`
 	CreditNote        *NewInvoice `json:"credit_note"`
 	DebitNote         *NewInvoice `json:"debit_note"`
+	ProprietaryUID    string      `json:"proprietary_uid,omitempty"`
 }
 
 type InvoicesCreateResponseBody struct {
